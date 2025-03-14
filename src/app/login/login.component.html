@@ -1,0 +1,13 @@
+<div *ngIf="!loggedIn">
+    <asl-google-signin-button
+    [clientId]="clientId"
+    [scopes]="['profile', 'email']"
+  ></asl-google-signin-button>
+</div>
+
+<div *ngIf="loggedIn">
+    <p>Welcome, {{ user?.name }}!</p>
+    <p>Email: {{ user?.email }}</p>
+    <img [src]="user?.photoUrl" alt="Profile Picture" *ngIf="user?.photoUrl">
+    <button (click)="signOut()">Sign out</button>
+</div>
