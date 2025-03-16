@@ -1,0 +1,45 @@
+<section id="services-2" class="services-2 section dark-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Services</h2>
+    <p>Necessitatibus eius consequatur</p>
+  </div>
+  <!-- End Section Title -->
+
+  <div class="services-carousel-wrap">
+    <div class="container">
+      <div class="swiper init-swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+        <div class="swiper-wrapper" id="swiper-wrapper" aria-live="off">
+          <div *ngFor="let slide of slides; let i = index" class="swiper-slide" role="group" [attr.aria-label]="i + 1 + ' / ' + slides.length" [attr.data-swiper-slide-index]="i">
+            <div class="service-item">
+              <div class="service-item-contents">
+                <a [routerLink]="slide.link">
+                  <span class="service-item-category">{{ slide.category }}</span>
+                  <h2 class="service-item-title">{{ slide.title }}</h2>
+                </a>
+              </div>
+              <img [src]="slide.image" alt="Image" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+          <span *ngFor="let slide of slides; let i = index" 
+          class="swiper-pagination-bullet" 
+          [class.swiper-pagination-bullet-active]="i === activeIndex" 
+          tabindex="0" 
+          role="button" 
+          [attr.aria-label]="'Go to slide ' + (i + 1)" 
+          (click)="isSwiperReady && swiper ? goToSlide(i) : null">
+    </span>
+        </div>
+        <button class="navigation-prev js-custom-prev" tabindex="0" aria-label="Previous slide" aria-controls="swiper-wrapper">
+          <i class="bi bi-arrow-left-short"></i>
+        </button>
+        <button class="navigation-next js-custom-next" tabindex="0" aria-label="Next slide" aria-controls="swiper-wrapper">
+          <i class="bi bi-arrow-right-short"></i>
+        </button>
+        <span aria-live="assertive" aria-atomic="true" class="swiper-notification"></span>
+      </div>
+    </div>
+  </div>
+</section>
